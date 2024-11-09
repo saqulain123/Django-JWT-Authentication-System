@@ -19,8 +19,6 @@ class UserListView(APIView):
     permission_classes = [IsAuthenticated]
     
     def get(self, request):
-        # Fetch all users from the UserData model
         users = UserData.objects.all()
-        # Serialize the data to send in the response
         serializer = UserSerializer(users, many=True)
         return Response(serializer.data)
